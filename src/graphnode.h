@@ -23,8 +23,13 @@ private:
     std::vector<std::unique_ptr<GraphEdge>> _childEdges;  // edges to subsequent nodes
 
     // data handles (not owned)
-    std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
-    ChatBot *_chatBot;
+    std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes
+
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
+    //ChatBot *_chatBot;
+    ChatBot _chatBot;
 
     ////
     //// EOF STUDENT CODE
@@ -53,7 +58,10 @@ public:
     //// STUDENT CODE
     ////
 
-    void MoveChatbotHere(ChatBot *chatbot);
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
+    void MoveChatbotHere(ChatBot chatbot);
 
     ////
     //// EOF STUDENT CODE

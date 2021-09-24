@@ -17,11 +17,14 @@ ChatLogic::ChatLogic()
     //// STUDENT CODE
     ////
 
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
     // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
+    //_chatBot = new ChatBot("../images/chatbot.png");
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
+    //_chatBot->SetChatLogicHandle(this);
 
     ////
     //// EOF STUDENT CODE
@@ -32,10 +35,15 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
+    // Debug Warm-Up Task
     // ChatBot isn't owned by ChatLogic so I think it shouldn't be deleted here!
     // However, it is not possible to delete it inside GraphNode because the destructor would be called multiple times.
     // delete chatbot instance
-    delete _chatBot;
+
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
+    //delete _chatBot;
 
     // Task 3: Exclusive Ownership 2
     // Graph nodes in the vectors don't have to be deleted anymore because
@@ -233,9 +241,16 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
         }
     }
 
+
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
+    ChatBot localChatBot("../images/chatbot.png");
+    localChatBot.SetChatLogicHandle(this);
+
     // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode);
-    rootNode->MoveChatbotHere(_chatBot);
+    localChatBot.SetRootNode(rootNode);
+    rootNode->MoveChatbotHere(std::move(localChatBot));
     
     ////
     //// EOF STUDENT CODE

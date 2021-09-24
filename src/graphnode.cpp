@@ -42,16 +42,23 @@ void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 
 //// STUDENT CODE
 ////
-void GraphNode::MoveChatbotHere(ChatBot *chatbot)
+
+// Task 5 : Moving the ChatBot
+// create a local ChatBot instance on the stack
+// use move semantics to pass the ChatBot instance into the root node
+void GraphNode::MoveChatbotHere(ChatBot chatbot)
 {
-    _chatBot = chatbot;
-    _chatBot->SetCurrentNode(this);
+    _chatBot = std::move(chatbot);
+    _chatBot.SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
-    newNode->MoveChatbotHere(_chatBot);
-    _chatBot = nullptr; // invalidate pointer at source
+    // Task 5 : Moving the ChatBot
+    // create a local ChatBot instance on the stack
+    // use move semantics to pass the ChatBot instance into the root node
+    newNode->MoveChatbotHere(std::move(_chatBot));
+    //_chatBot = nullptr; // invalidate pointer at source
 }
 ////
 //// EOF STUDENT CODE
