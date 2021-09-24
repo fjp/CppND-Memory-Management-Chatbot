@@ -17,6 +17,7 @@ private:
     //// STUDENT CODE
     ////
 
+    // Task 1: Exclusive Ownership 1
     std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
