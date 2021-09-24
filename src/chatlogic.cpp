@@ -32,6 +32,8 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
+    // ChatBot isn't owned by ChatLogic so I think it shouldn't be deleted here!
+    // However, it is not possible to delete it inside GraphNode because the destructor would be called multiple times.
     // delete chatbot instance
     delete _chatBot;
 

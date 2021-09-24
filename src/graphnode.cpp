@@ -11,7 +11,15 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    // A graphNode can own the ChatBot, so in my opinion it should be deleted here.
+    // However, the following isn't working which is why I delete it in the (non-owning) ChatLogic
+    // This is why we delete it here
+    //if (_chatBot != nullptr)
+    //{
+    //    delete _chatBot;
+    //    _chatBot = nullptr;
+    //}
+    
 
     ////
     //// EOF STUDENT CODE
