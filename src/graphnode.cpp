@@ -11,6 +11,7 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
+    // Debug Warm-Up Task
     // A graphNode can own the ChatBot, so in my opinion it should be deleted here.
     // However, the following isn't working which is why I delete it in the (non-owning) ChatLogic
     // This is why we delete it here
