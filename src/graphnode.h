@@ -5,6 +5,8 @@
 #include <string>
 #include "chatbot.h"
 
+#include <memory>
+
 
 // forward declarations
 class GraphEdge;
@@ -16,7 +18,9 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphEdge *> _childEdges;  // edges to subsequent nodes
+    // Task 4: Moving Smart Pointers
+    // GraphEdge ownership belongs to GraphNodes not to ChatLogic.
+    std::vector<std::unique_ptr<GraphEdge>> _childEdges;  // edges to subsequent nodes
 
     // data handles (not owned)
     std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
@@ -44,7 +48,7 @@ public:
     // proprietary functions
     void AddToken(std::string token); // add answers to list
     void AddEdgeToParentNode(GraphEdge *edge);
-    void AddEdgeToChildNode(GraphEdge *edge);
+    void AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge);
 
     //// STUDENT CODE
     ////

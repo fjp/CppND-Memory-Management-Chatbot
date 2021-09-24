@@ -20,6 +20,10 @@ private:
 
     // data handles (owned)
     std::vector<std::unique_ptr<GraphNode>> _nodes;
+
+    // Task 4: Moving Smart Pointers
+    // GraphEdge ownership belongs to GraphNodes not to ChatLogic.
+    // data handles (not owned)
     std::vector<GraphEdge *> _edges;
 
     ////
