@@ -47,7 +47,7 @@ ChatBot::~ChatBot()
 
 ChatBot::ChatBot(const ChatBot& source) // copy constructor
 {
-    std::cout << "COPYING content of instance " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot COPYING content of instance " << &source << " to instance " << this << std::endl;
     // data handles (owned)
     _image = new wxBitmap(*source._image); // create deep copy of avatar image
 
@@ -59,7 +59,7 @@ ChatBot::ChatBot(const ChatBot& source) // copy constructor
 
 ChatBot& ChatBot::operator=(const ChatBot& source) // copy assignment
 {
-    std::cout << "Assigning content of instance " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot Assigning content of instance " << &source << " to instance " << this << std::endl;
     if (this != &source)
     {
         // data handles (owned)
@@ -77,7 +77,7 @@ ChatBot& ChatBot::operator=(const ChatBot& source) // copy assignment
 
 ChatBot::ChatBot(ChatBot&& source) noexcept // move constructor
 {
-    std::cout << "MOVING (c'tor) instance " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot MOVING (c'tor) instance " << &source << " to instance " << this << std::endl;
     // data handles (owned)
     _image = source._image; // move handle from source to this destination ChatBot instance
     source._image = NULL; // Invalidate source handle after moving it. Attention: wxWidgets used NULL and not nullptr
@@ -94,7 +94,7 @@ ChatBot::ChatBot(ChatBot&& source) noexcept // move constructor
  
 ChatBot& ChatBot::operator=(ChatBot&& source) noexcept // move assignment
 {
-    std::cout << "MOVING (assign) instance " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot MOVING (assign) instance " << &source << " to instance " << this << std::endl;
     if (this != &source)
     {
         // data handles (owned)
