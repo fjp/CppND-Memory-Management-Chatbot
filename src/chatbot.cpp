@@ -87,6 +87,9 @@ ChatBot::ChatBot(ChatBot&& source) noexcept // move constructor
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
 
+    // Set member _chatbot of _chatLogic to this ChatBot instance.
+    _chatLogic->SetChatbotHandle(this);
+
     source._currentNode = nullptr;
     source._rootNode = nullptr;
     source._chatLogic = nullptr;
@@ -107,6 +110,9 @@ ChatBot& ChatBot::operator=(ChatBot&& source) noexcept // move assignment
         _currentNode = source._currentNode;
         _rootNode = source._rootNode;
         _chatLogic = source._chatLogic;
+
+        // Set member _chatbot of _chatLogic to this ChatBot instance.
+        _chatLogic->SetChatbotHandle(this);
 
         source._currentNode = nullptr;
         source._rootNode = nullptr;
